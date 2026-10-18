@@ -8,6 +8,7 @@ import subprocess
 import sys
 import urllib.request
 import zipfile
+from native_privacy import require_clean_executable
 
 ROOT = Path(__file__).resolve().parents[1]
 PYTHON_URL = 'https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip'
@@ -23,6 +24,7 @@ def main():
     if Path(args.name).name != args.name: raise SystemExit('name must be a directory name')
     for p in [args.exe, *(args.assets / n for n in ASSETS)]:
         if not p.is_file(): raise SystemExit(f'Missing required input: {p}')
+    require_clean_executable(args.exe)
     dest=ROOT/'release'/args.name
     dest.mkdir(parents=True,exist_ok=False)
     py=dest/'runtime/python'; py.mkdir(parents=True)

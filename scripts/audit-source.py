@@ -3,6 +3,7 @@ from pathlib import Path
 import json
 import re
 import subprocess
+from native_privacy import PATH_RULES
 
 ROOT=Path(__file__).resolve().parents[1]
 PRIVATE_PARTS={'.qdt-home','.release-work','.venv','node_modules','target','dist','release',
@@ -15,6 +16,8 @@ RULES={
     'AWS access key':rb'\b(?:AKIA|ASIA)[A-Z0-9]{16}\b',
     'private key':rb'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',
     'developer home path':rb'(?i)[C-Z]:[\\/]+(?:Users[\\/]+(?!Public\b|Default\b)[^\\/\s]+|OneDrive[\\/])',
+    'absolute Rust source path':PATH_RULES['absolute Rust source path'].pattern.encode(),
+    'build cache path':PATH_RULES['build cache path'].pattern.encode(),
 }
 
 def main():

@@ -33,13 +33,16 @@ Optional UI checks use `playwright` with Chromium and isolated mock data:
 Release build:
 
 ```powershell
-cd apps/desktop
-npm run build
-cd src-tauri
-cargo build --release --features custom-protocol --locked
-cd ../../..
-python scripts/package-windows.py --exe apps/desktop/src-tauri/target/release/qdt-gemini.exe --assets <asset-directory>
+python scripts/build-windows.py
+python scripts/package-windows.py --exe .release-work/release-target/release/qdt-gemini.exe --assets <asset-directory>
 ```
+
+Use the release script so the application and every Rust dependency are compiled
+with source paths remapped to generic locations. It respects `CARGO_HOME` and
+supports `--offline` and `--target-dir`. The executable audit rejects developer
+home paths, absolute Rust source paths and credential patterns; packaging repeats
+this check before creating a distribution. Direct `cargo build` is suitable for
+development, but does not apply these release privacy settings.
 
 The asset directory must contain `SourceHanSerifKR-Regular.ttf` and
 `doclayout_yolo_docstructbench_imgsz1024.onnx`. Sources and licenses are listed in

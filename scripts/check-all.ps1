@@ -36,6 +36,10 @@ Invoke-Step "Python services (isolated configuration)" "." {
     & $Python -X utf8 -B scripts/check-python.py
 }
 
+Invoke-Step "release privacy regression tests" "." {
+    & $Python -X utf8 -B -m unittest discover -s scripts/tests -v
+}
+
 Invoke-Step "desktop node tests" "apps/desktop" {
     & node --test "tests/*.test.mjs"
 }
