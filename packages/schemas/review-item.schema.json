@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QDT Review Item",
+  "description": "Unified review item used across mixed-renderer, scholar-translator, Rust bridge, and frontend.",
+  "type": "object",
+  "required": ["page", "kind", "severity", "source_text", "status"],
+  "properties": {
+    "page": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "1-indexed page number in the source document"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "layout_overflow",
+        "term_mismatch",
+        "modal_misuse",
+        "acronym_inconsistent",
+        "table_cell_error",
+        "figure_label_error",
+        "residual_english",
+        "quality_gate_fail",
+        "engine_warning",
+        "conflict"
+      ],
+      "description": "Category of the review issue"
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["info", "warning", "blocking"],
+      "description": "info = advisory, warning = should fix, blocking = must fix before delivery"
+    },
+    "source_text": {
+      "type": "string",
+      "description": "Original English text (truncated to 200 chars in audit)"
+    },
+    "translated_text": {
+      "type": "string",
+      "description": "Korean translation (truncated to 200 chars in audit)"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Human-readable explanation of why this item is flagged"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["open", "approved", "rejected", "resolved"],
+      "description": "open = needs review, approved = accepted, rejected = needs re-translation, resolved = fixed"
+    },
+    "fitted": {
+      "type": "boolean",
+      "description": "Whether the translated text fits in the original PDF layout box"
+    }
+  }
+}

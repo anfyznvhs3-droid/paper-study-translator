@@ -1,0 +1,33 @@
+source,target,notes
+Abstract,초록,exact-heading
+Abstract:,초록:,exact-heading
+Keywords,키워드,exact-heading
+Keywords:,키워드:,exact-heading
+Article history,논문 이력,exact-heading
+Received,접수,exact-heading
+Revised,수정,exact-heading
+Accepted,승인,exact-heading
+Available online,온라인 공개,exact-heading
+How to cite,인용 방법,exact-heading
+Introduction,서론,exact-heading
+Related work,관련 연구,exact-heading
+Literature review,문헌 검토,exact-heading
+Materials and methods,재료 및 방법,exact-heading
+Methods,방법,exact-heading
+Methodology,방법론,exact-heading
+Results,결과,exact-heading
+Results and discussion,결과 및 논의,exact-heading
+Discussion,논의,exact-heading
+Conclusion,결론,exact-heading
+Conclusions,결론,exact-heading
+Acknowledgements,감사의 글,exact-heading
+Acknowledgments,감사의 글,exact-heading
+Funding,연구비 지원,exact-heading
+Author contributions,저자 기여,exact-heading
+Conflict of interest,이해관계 충돌,exact-heading
+Declaration of competing interest,경쟁적 이해관계 선언,exact-heading
+Data availability,데이터 가용성,exact-heading
+Ethics approval,윤리 승인,exact-heading
+Supplementary information,보충 정보,exact-heading
+Corresponding author,교신저자,exact-heading
+References,참고문헌,exact-heading

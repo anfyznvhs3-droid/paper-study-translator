@@ -1,0 +1,16 @@
+requests
+tqdm
+tenacity
+numpy
+huggingface_hub
+onnx
+onnxruntime
+opencv-python-headless
+pdfminer-six==20250416
+pikepdf
+fontTools
+peewee>=3.17.8
+boto3>=1.26.0
+rich
+pymupdf<1.25.3
+babeldoc>=0.3.50

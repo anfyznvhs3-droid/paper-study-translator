@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QDT Job Report",
+  "type": "object",
+  "required": ["job_id", "status", "files", "errors", "warnings"],
+  "properties": {
+    "job_id": { "type": "string" },
+    "status": { "enum": ["completed", "completed_with_warnings", "failed"] },
+    "files": { "type": "array" },
+    "errors": { "type": "array", "items": { "type": "string" } },
+    "warnings": { "type": "array", "items": { "type": "string" } }
+  }
+}
+

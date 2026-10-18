@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qdt-mixed-renderer"
+version = "0.1.0"
+description = "Layout-preserving mixed-language PDF renderer"
+requires-python = ">=3.10"
+dependencies = [
+    "PyMuPDF>=1.24",
+    "kiwipiepy>=0.23",
+    # scholar-translator is a runtime dependency (imported via PYTHONPATH)
+]
+
+[tool.setuptools]
+py-modules = ["qdt_mixed_renderer"]

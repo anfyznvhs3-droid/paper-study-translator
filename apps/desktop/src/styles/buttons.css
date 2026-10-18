@@ -1,0 +1,81 @@
+/* Shared button contract: the existing 8px, pastel QDT theme, with no borders.
+   Screens own placement only. Focus outlines indicate keyboard focus, not a
+   permanent button edge. API actions use the same primary/secondary classes. */
+button {
+  appearance: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.primary-button,
+:is(.secondary-button, .cat-format-help-trigger) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  transition: background-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+.primary-button {
+  background-color: var(--action-bg);
+  background-image: linear-gradient(135deg in srgb, var(--action-start), var(--action-end));
+  color: var(--action-fg);
+}
+
+.primary-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+:is(.secondary-button, .cat-format-help-trigger) {
+  background: var(--surface-strong);
+  color: var(--text);
+}
+
+:is(.secondary-button, .cat-format-help-trigger):hover:not(:disabled) {
+  background: var(--surface-hover);
+}
+
+:is(.secondary-button, .cat-format-help-trigger).danger-button {
+  color: var(--danger-fg);
+}
+
+.primary-button:active:not(:disabled),
+:is(.secondary-button, .cat-format-help-trigger):active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.primary-button:disabled,
+:is(.secondary-button, .cat-format-help-trigger):disabled {
+  background: var(--surface-strong);
+  color: var(--muted);
+  transform: none;
+  box-shadow: none;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary-button,
+  :is(.secondary-button, .cat-format-help-trigger) {
+    transition: none;
+  }
+}

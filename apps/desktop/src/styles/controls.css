@@ -1,0 +1,50 @@
+/* All selections/disclosures share themed controls. Native menu chrome is not used. */
+.qdt-icon { display: block; width: 24px; height: 24px; flex: 0 0 24px; }
+.qdt-select { display: block; width: 100%; min-width: 0; }
+.qdt-select-trigger { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 44px; padding: 10px 12px; border: 0; border-radius: 8px; background: var(--surface-strong); color: var(--text); font: inherit; font-size: 14px; font-weight: 400; line-height: 1.4; text-align: left; box-shadow: none; }
+.qdt-select-trigger:hover:not(:disabled) { background: var(--surface-hover); }
+.qdt-select-trigger .qdt-select-value { min-width: 0; font-size: 14px; font-weight: 400; letter-spacing: 0; color: inherit; overflow-wrap: anywhere; }
+.qdt-select-menu { z-index: 1000; overflow-y: auto; overscroll-behavior: contain; padding: 4px; border: 0; border-radius: 8px; box-sizing: border-box; background: var(--surface); color: var(--text); box-shadow: 0 8px 28px color-mix(in srgb,var(--text) 18%,transparent); }
+.qdt-select-option { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding: 10px 12px; border: 0; border-radius: 6px; font-size: 14px; line-height: 1.4; cursor: pointer; }
+.qdt-select-option > span { min-width: 0; overflow-wrap: anywhere; }
+.qdt-select-option[aria-selected="true"] { font-weight: 600; }
+.qdt-select-option.is-active { background: var(--surface-selected); color: var(--on-selected); }
+.disclosure-icon { transition: transform 160ms ease; }
+[aria-expanded="true"] > .disclosure-icon,
+[aria-expanded="true"] > .api-disclosure-state > .disclosure-icon,
+details[open] > summary .disclosure-icon { transform: rotate(180deg); }
+.api-disclosure-state, .glossary-disclosure-state { align-items: center; }
+summary { list-style: none; cursor: pointer; }
+summary::-webkit-details-marker { display: none; }
+summary > .disclosure-icon { display: inline-block; vertical-align: middle; margin-left: 8px; }
+.patch-note-row summary { grid-template-columns: minmax(0,1fr) auto 24px; }
+.patch-note-row summary > .disclosure-icon { margin-left: 0; }
+.result-workspace summary, .complete-workspace summary { min-height: 44px; }
+
+.segmented-control { position: relative; isolation: isolate; grid-template-columns: repeat(var(--segment-count),minmax(0,1fr)); gap: 0; padding: 4px; background: var(--surface-strong); border: 0; }
+.segment-indicator { position: absolute; left: 4px; top: 4px; bottom: 4px; width: calc((100% - 8px) / var(--segment-count)); border-radius: 6px; background: var(--surface-selected); transform: translateX(calc(var(--segment-index) * 100%)); transition: transform 180ms ease; pointer-events: none; z-index: -1; }
+.segmented-control .segment, .segmented-control .segment:hover, .segmented-control .segment.is-active { min-height: 44px; border: 0; background: transparent; box-shadow: none; color: var(--text); transition: color 120ms ease; }
+.segmented-control .segment.is-active { color: var(--on-selected); }
+.segmented-control .segment span { font-size: 14px; font-weight: 700; }
+.segmented-control .segment:hover:not(.is-active) span { text-decoration: underline; text-underline-offset: 4px; }
+
+.setup-panel-minimal .setup-status-strip { gap: 8px; border: 0; background: transparent; border-radius: 0; overflow: visible; align-items: stretch; }
+.setup-status-strip > div, .setup-status-strip > label { min-width: 0; min-height: 86px; align-content: center; padding: 10px 12px; border: 0; border-radius: 8px; background: var(--surface-strong); }
+.setup-status-strip > div > span, .setup-status-strip > label > span:not(.qdt-select) { font-size: 13px; font-weight: 400; letter-spacing: 0; color: var(--muted); }
+.setup-status-strip > div > strong { font-size: 14px; }
+.setup-status-strip .qdt-select-trigger { background: var(--surface); }
+.setup-status-strip .qdt-select-trigger:hover { background: var(--surface-hover); }
+.setup-strip-action { min-height: 44px; align-self: center; }
+.setup-api-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.api-key-indicator { position: relative; width: 44px; height: 44px; padding: 10px; }
+.api-key-badge { position: absolute; width: 14px; height: 14px; bottom: 4px; right: 3px; border-radius: 50%; background: var(--surface-strong); }
+.setup-engine-line > span { font-size: 14px; font-weight: 600; }
+.api-field input, .text-field :is(input:not([type="checkbox"]):not([type="color"]),textarea) { border: 0; border-radius: 8px; background: var(--surface-strong); color: var(--text); font-size: 14px; }
+.workspace h2[tabindex="-1"]:focus { outline: none; }
+@media (max-width: 760px) {
+  .setup-status-strip > div, .setup-status-strip > label { min-height: 72px; }
+  .setup-api-actions { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .segment-indicator, .disclosure-icon, .segmented-control .segment { transition: none; }
+}

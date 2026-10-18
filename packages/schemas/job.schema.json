@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QDT Job",
+  "type": "object",
+  "required": [
+    "job_id",
+    "project_id",
+    "source_language",
+    "target_language",
+    "review_mode",
+    "translation_mode",
+    "engine_id",
+    "output_mode",
+    "files"
+  ],
+  "properties": {
+    "job_id": { "type": "string" },
+    "project_id": { "type": "string" },
+    "source_language": { "const": "en" },
+    "target_language": { "const": "ko" },
+    "review_mode": { "enum": ["review_on", "review_off"] },
+    "translation_mode": { "enum": ["agent", "machine_translation", "manual"] },
+    "engine_id": {
+      "enum": [
+        "codex_agent",
+        "claude_code_agent",
+        "antigravity_agent",
+        "google_translate_draft",
+        "manual_fill"
+      ]
+    },
+    "output_mode": { "enum": ["mono", "dual"] },
+    "domain_slug": { "type": "string" },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["file_id", "path"],
+        "properties": {
+          "file_id": { "type": "string" },
+          "path": { "type": "string" }
+        }
+      }
+    }
+  }
+}
+

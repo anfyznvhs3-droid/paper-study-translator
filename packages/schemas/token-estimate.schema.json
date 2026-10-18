@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QDT Token Estimate",
+  "type": "object",
+  "required": [
+    "source_tokens_estimated",
+    "profile_tokens_estimated",
+    "prompt_overhead_tokens_estimated",
+    "output_tokens_estimated",
+    "total_input_tokens_estimated",
+    "total_output_tokens_estimated",
+    "pricing_basis",
+    "confidence"
+  ],
+  "properties": {
+    "source_tokens_estimated": { "type": "integer", "minimum": 0 },
+    "profile_tokens_estimated": { "type": "integer", "minimum": 0 },
+    "prompt_overhead_tokens_estimated": { "type": "integer", "minimum": 0 },
+    "output_tokens_estimated": { "type": "integer", "minimum": 0 },
+    "total_input_tokens_estimated": { "type": "integer", "minimum": 0 },
+    "total_output_tokens_estimated": { "type": "integer", "minimum": 0 },
+    "estimated_cost_low": { "type": ["number", "null"], "minimum": 0 },
+    "estimated_cost_high": { "type": ["number", "null"], "minimum": 0 },
+    "pricing_basis": { "type": "string" },
+    "confidence": { "enum": ["low", "medium", "high"] }
+  }
+}
+
